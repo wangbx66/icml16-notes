@@ -16,6 +16,7 @@ Many real-world domains can be modeled using some form of abstraction. An abstra
 
 The ever-increasing size and accessibility of vast music libraries has created a demand more than ever for machine learning systems that are capable of understanding and organizing this complex data. Collaborative filtering provides excellent music recommendations when the necessary user data is available, but these approaches also suffer heavily from the cold-start problem. Furthermore, defining musical similarity directly is extremely challenging as myriad features play some role (e.g., cultural, emotional, timbral, rhythmic). The topics discussed will span a variety of music recommender systems challenges including cross-cultural recommendation, content-based audio processing and representation learning, automatic music tagging, and evaluation.
 
+**AMAs**
 
 1. As much of the success in working with small sample sizes involves transfer learning in some way, e.g. finetuning or feature extraction using a network pretrained on ImageNet or something similar, it seems this process is inherently suboptimal since both the original architecture of the network (whether AlexNet, VGG, or whatever) and the ImageNet dataset weren't made with transfer learning in mind.
 With that in mind, are we going to see general-purpose networks designed specifically for transfer learning? Is unsupervised pre-training going to make a comeback? More broadly speaking, is transfer learning even seen as the solution to small sample size problems, or is there something better in the works?
@@ -31,13 +32,15 @@ Intuitively, it would seem that probabilistic programming is better suited to us
 EDIT for clarification: A crude linear way of removing batch effects might be retaining the residual deviance + the deviance explained by X from regressing Y ~ B + X, where Y is the dependent variable, X are the independents, and B is the batch label. Might deep learning be capable of performing such normalization automatically? (e.g. automatically inferring latent batch labels from X and regressing them out with something like Residual Networks)?
 You could probably do this with adversarial training - train a secondary predictor to try to estimate which batch a given sample came from given only the hidden layer activations of your primary network, then add a term to the loss function of the primary network which encourages it to only retain information in the intermediate layers that make the secondary network's job hard. https://www.robots.ox.ac.uk/~vgg/rg/papers/Tzeng_ICCV2015.pdf is pretty much this idea.
 
-Day 2: What does simulation-based learning bring to the table?
+## Day 2: What does simulation-based learning bring to the table?
 
 Under this broad theme, more specific questions may include “How transferrable is the knowledge learned from a simulation to the real world?", "Are simulated environments the way to achieve machine intelligence?" and "How important is it for agents to simulate the world in their minds?” Even more radical ones will also be discussed, such as “Does simulation-based learning have anything to do in making progress toward artificial intelligence?”
 
 * Online advertising systems https://sites.google.com/site/admlsystemsworkshop/
 
 Online advertising is a multi-billion dollar industry driven by the confluence of machine learning, optimization, control systems, auction algorithms, econometrics and software engineering. The goal of this workshop is to discuss how machine learning systems operate within the context of an advertising system.
+
+**AMAs**
 
 1. What is the best way to augment simulated data with real world data?
 Said another way, is it possible to take a hybrid approach wherein the simulation is primarily based on real world data but we can use simulation or physical models to perturb or extrapolate rare situations or situations not yet seen in the data, creating a more complete manifold for the network to learn?
