@@ -1,4 +1,4 @@
-# ICML Day 2 RL
+## ICML Day 2 RL
 
 ### Guided Cost Learning Algorithm
 
@@ -78,3 +78,57 @@ Proposed
 This is an interesting interdiciplinary research of psycho and RL
 * CPT captures human performance
 * the feeling of losing 10k is bigger than wining 10k -> utility function
+* 
+## ICML Day 3 MISC
+
+### approx kemeny consensus
+
+* rank aggregation: [kemeny](https://en.wikipedia.org/wiki/Kemeny%E2%80%93Young_method) consensus is np-hard, we want a proximity, but fast approach
+* this work: given a ranking, we compute how close it is to the kemeny consensus
+* experiment on sushi ranking
+* 
+
+### rank breaking for rank aggregation
+
+* rank breaking: break each person's ordinal preference into pairwise comparisons
+* treat the paired comparisons outcomes unequally, depending on the topology of the collected data
+* *best* rank breaking estimator
+* 
+### neural autoregressive for CF
+
+* recently RBM for CF
+* recent work NADE. CF-NADE trys to find the conditional distribution using a network structure; 
+* use random order instead of timestamp
+* RBF+NADE: share parameter, and each time for one user
+* scalability: fatorize the matrix into the product of two low-rank matrices
+* Movielens 1M, user-based CF
+
+###  Scalable Gradient-Based Tuning of Continuous Regularization Hyperparameters
+
+* Learns, using gradient, the regularization factor :p
+* 
+### Electricity Grid Management via RL
+
+* formulate as MDP
+* policy approx and value approx/ typical policy-value pair
+* existing/classical approach + toy dataset, but sounds interesting
+* 
+### forecastICU
+
+* predict, using the sequencial data of the patient, the possibility that the patient needs an ICU treatmeant
+* pretty practical work: predict the case 3 hours before it happens.
+* 
+### Learning to Filter with Predictive State Inference Machines
+
+
+
+### population level diffusion modeling via RNN
+
+* what we observe is the individual behavior.
+* mean result: what is the natural lost of this problem
+* The model is based on specifying a potential function and a recurrence relationship. The method uses RNN to capture the recurrence
+* only synthetic experiment
+ 
+### Fast Parameter Inference in Nonlinear Dynamical Systems using Iterative Gradient Matching 
+
+* 
