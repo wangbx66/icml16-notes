@@ -131,4 +131,19 @@ This is an interesting interdiciplinary research of psycho and RL
  
 ### Fast Parameter Inference in Nonlinear Dynamical Systems using Iterative Gradient Matching 
 
+## ICML Day 4 RL Workshop
+
+### toward learning representative
+
+* motivated: create AI that helps agents to learn
+* interacting machine learning problem - if you have a good teacher, the teach lern to improve its own teaching skills
+* abstraction can help speed learning
+* abstraction learning v.s. efficient exploration
+* options (mini policies)/ macro-actions
+* option discovery? 
+* sample complexity - mistakes we make
 * 
+algorithm
+* efficient exploration by representing uncertainty over model & parameter values
+* adapt representation based on data
+* reduce computation
