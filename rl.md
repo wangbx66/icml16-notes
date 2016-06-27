@@ -1,4 +1,32 @@
-## ICML Day 2 RL
+# ICML 16 Notes on Reinforcement Learning
+
+This year's ICML features a one-and-a-half day session on reinforcement learning, which generally talks about the recent advantage of DQN, iRL, and policy optimization and evaluation. This note will also cover whatever related part of works in online learning as well as deep learning. Organized chronological.
+
+## Day 1 RL
+
+### Why Most Decisions Are Easy in Tetris
+
+Inspecting Tetris, it's found that most individual problems encountered are easy in the following sense: One can choose well among the available actions without knowing an evaluation function that scores well in the game. Furthermore, there is an intuitive feature that typically eliminates a substantial number of actions. 
+
+Borrowing concepts from the *comparison* problem, the underlying reasons are three types of regularities in the domain, namely, simple dominance, cumulative dominance, and noncompensation. Viewing Tetris as a series of comparison problems, the agent is able to make the decision using the tress regularities, even the actual evaluation function unknown.
+
+The work utilizes 8 features previously proposed in Trtris frameworks. The features are assembles in an order per their corresponding linear weights in that work, to form the set of elements to be compared. The elimination shows a 70% - 90% removal of actions, while keeping a competitive overall strength of play.
+
+* Trivia: Finding the optimal placement of teriminos is NP-complete.
+
+### Opponent Modeling in Deep Reinforcement Learning
+
+* 
+
+### Control of Memory, Active Perception, and Action in Minecraft
+
+*
+
+### Dueling Network Architectures for Deep Reinforcement Learning
+
+*
+
+## Day 2 RL
 
 ### Guided Cost Learning Algorithm
 
