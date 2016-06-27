@@ -1,6 +1,6 @@
 # The Big 5
 
- * Making sense of people decoding and decoding the mysteries of personality.
+ * Making sense of people and decoding the mysteries of personality.
 
 The story of the big 5 is motivated from how Klein is able to highlight the main characteristics with only a handful of words. Was he intuitively asking himself a set of questions that are as obvious to him as the five Ws? Also can we learn a technique to make our own descriptions of people more incisive and complete?
 
