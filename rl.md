@@ -2,7 +2,7 @@
 
 This year's ICML features a one-and-a-half day session on reinforcement learning, which generally talks about the recent advantage of DQN, iRL, and policy optimization and evaluation. This note will also cover whatever related part of works in online learning as well as deep learning. Organized chronological.
 
-## Day 1 RL
+## Day 1 RL Track
 
 ### Why Most Decisions Are Easy in Tetris
 
@@ -16,17 +16,52 @@ The work utilizes 8 features previously proposed in Trtris frameworks. The featu
 
 ### Opponent Modeling in Deep Reinforcement Learning
 
-* 
+The work is driven by the previous studies of poker, where the agent can exploit suboptimal players if it can predict their bad moves. The goal is usually a challenging one because of strategies’ complex interaction and the non-stationary nature.
+
+The proposed DRON (O for opponent)
+* the gating part of the network acts as the original DQN, which outputs the probability distribution over the feasible actions
+* the hidden value of the gating component is also used to predict the action of all other agents, in a supervised manner
+* meanwhile, the expert component trys to predict the Q values of the opponents, sharing the same network until the hidden vector
+* the final Q value is calculated using each Q value of the opponent, as well as the gating one.
+* in the experiment, to show the strength of the opponent modeling, the author design the opponent to be either extremely offensive, or extremely defensive
+* open source on [github](https://github.com/hhexiy/opponent)
 
 ### Control of Memory, Active Perception, and Action in Minecraft
 
-*
+The work proposes feedback recurrent memory Q-network (FRMQN), which feature the ability to retrive a prior observation from memory depends on the current context. To do this, the features are mapped linearly into a memory unit. The reading operation is based on soft attention. In this way, the recurrent input of the hidden layer is the concatenation of both the observation and the retrived memory. The hidden layer as well the memory, are finally used to calculate the Q value.
+
+* the work is driven by the fact in Minecraft that, in order to achieve a high score, the model have to make decisions based on some early observations.
 
 ### Dueling Network Architectures for Deep Reinforcement Learning
 
-*
+Besides the state value function, the dueling network models the state-dependent action advantage function as well. It leads to better policy evaluation win the presense of many similar-value actions.
 
-## Day 2 RL
+The algorithm is motivated by DDQN, where the action chosen in the loss function is the best predicted action based on current Q function instead of the target network. Considering Q=V+A where E[A]=0, it constructs two separate networks from the top layer of the convolution representation, to predict A for each action and V. Apply the following to identify V and A from Q,
+
+* Q=V+A-\bar{A}; 
+* replace \bar{A} with \softmax{A} should yield similar performance, but more complexity
+
+Trivias:
+* well written and enjoyable to read
+* new state-of-the-art on Atari 2600
+
+### C3 Bandit
+
+This work extend the combinatorial cascading bandit problem to its contextual version, which makes sense in practical cases such as search and recommendation. With extended UCB it achieves guranteed squared root times logarithmatic regret.
+
+Code available on [github](https://github.com/wangbx66/contextual-bandit).
+
+## Day 2 RL Track
+
+### Complex Backup Strategies in MCTS
+
+The paper introduces back-up in RL, to UCT. During the search progress, the Q value is updated using an interpolation between the current cumulative return and the existing Q-value of that state action.
+
+* The paper leads to empirical results, instead of theoratical ones.
+
+### Doubly Robust Off-policy Value Evaluation
+
+This paper is talking about the robust version of off-policy value evaluation. The problem is extremely important where the new policies evolved can only be examined on the log data instead of a real-time interaction. Applying that to bandit problems, it gurantees to be unbiased and relative lower variance.
 
 ### Guided Cost Learning Algorithm
 
