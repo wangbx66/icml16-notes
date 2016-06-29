@@ -76,22 +76,22 @@ A new algorithm as its title says. It gurantees some theoratical merits.
 
 This is a direct application of policy gradient on policy imitation, finding a parameterized stochastic policy mimicking expert demonstrations. It is supposed to replace behavioral cloning which suffers from cascading errors.
 
-Minimizing the superior gap between the policy performance and the expert performance on a set of pre-defined cost function, apprenticeship learning is able to handle some case with low-complexity of the state space, while it generally goes a iteration of reinforcement learning, which is extremely computational expensive. Inspired by LPAL, which is an AL solution based on game theory, the paper proposes to optimize gap directly over parameterized stochastic policies instead of state-action visitation distributions.
+Minimizing the superior gap between the policy regret and the expert regret on a set of pre-defined cost function, apprenticeship learning is able to handle some case with low-complexity of the state space, while it generally goes a iteration of reinforcement learning, which is extremely computational expensive. Inspired by LPAL, which is an AL solution based on game theory, the paper proposes to optimize the gap directly over parameterized stochastic policies instead of state-action visitation distributions.
 
-To do this, consider the fact that the policy gradient is the gradient, w.r.t. policy parameter, of the policy performance, given the cost function which maximizes the gap. The optimization is achieved by iteratively finding the cost function minima and the policy maxima. Details for that on section 4.1 onwards.
+To do this, consider the fact that the policy gradient is the gradient, w.r.t. policy parameter, of the policy performance, given the cost function which minimize the gap. The optimization is achieved by iteratively finding the cost function maxima and the policy minima. The policy minima is improved by monotonic policy improvements on section 4.2, while the function maxima can be solved under certain assumptions with details on section 4.3 onwards.
 
 ### Guided Cost Learning Algorithm
 
-An IRL about the NN cost function using human-recorded logs (multiple epoches).
+* This is the combination of NN and iRL, which is close to deep iRL
+
+This paper presents an algorithm capable of learning arbitrary nonlinear cost functions, such as neural networks, without meticulous feature engineering. It also formulates an efficient sample-based approximation for MaxEnt IOC which addresses the difficulty of learning the cost function under unknown dynamics for high-dimensional continuous systems.
 
 Algorithm
-* generate policy samples from q
+* generate trajectry samples from q
 * update cost using samples demos
-* update q w.r.t cost (partially optimize
+* update q in proportion to exp(-c)
 
-Ho et al ICML 16 , kim bengio arxiv 16
-
-Simulated Wxperiments, comparing path integral IRL a& relative entropy IRL
+Ref: Ho et al ICML 16 , kim bengio arxiv 16. Simulated experiments, comparing path integral IRL a& relative entropy IRL
 * 2D navigation
 * 2D reaching
  
@@ -157,6 +157,7 @@ Proposed
 This is an interesting interdiciplinary research of psycho and RL
 * CPT captures human performance
 * the feeling of losing 10k is bigger than wining 10k -> utility function
+* This paper provides an theoretical estimation of how CPT works on rewards
 
 ## ICML Day 3 MISC
 
