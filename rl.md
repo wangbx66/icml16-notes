@@ -66,6 +66,20 @@ This paper is talking about the robust version of off-policy policy evaluation. 
 The previous approaches are based on the idea of importance sampling, which corrects the mismatch between the distributions induced by the target policy and by the behavior policy. Such approaches have the salient properties of being
 unbiased and independent of the size of the problem’s state space, but its variance can be too large for the method to be useful when the horizon is long. Apply DR on that is able to reduce the variance, which is guranteed theoratically.
 
+###  Model-Free Trajectory Optimization
+
+A new algorithm as its title says. It gurantees some theoratical merits. 
+
+### Model-Free Imitation Learning via PG
+
+* This is an interesting work yielding both theoratical and empirical results, also related to the user imitation process in the software workflow designs
+
+This is a direct application of policy gradient on policy imitation, finding a parameterized stochastic policy mimicking expert demonstrations. It is supposed to replace behavioral cloning which suffers from cascading errors.
+
+Minimizing the superior gap between the policy performance and the expert performance on a set of pre-defined cost function, apprenticeship learning is able to handle some case with low-complexity of the state space, while it generally goes a iteration of reinforcement learning, which is extremely computational expensive. Inspired by LPAL, which is an AL solution based on game theory, the paper proposes to optimize gap directly over parameterized stochastic policies instead of state-action visitation distributions.
+
+To do this, consider the fact that the policy gradient is the gradient, w.r.t. policy parameter, of the policy performance, given the cost function which maximizes the gap. The optimization is achieved by iteratively finding the cost function minima and the policy maxima. Details for that on section 4.1 onwards.
+
 ### Guided Cost Learning Algorithm
 
 An IRL about the NN cost function using human-recorded logs (multiple epoches).
@@ -121,7 +135,6 @@ Async Advantage Actor-Critic
 
 * The usual approach of taking the maximum of the sample means leads to large overestimates that may significantly harm the performance of the learning algorithm.
 * A new estimator proposed based on a weighted average of the sample means, where the weights are computed using Gaussian approximations for the distributions of the sample means.
-* 
 
 ###  Data-Efficient Off-Policy Policy Evaluation
 how can we know how god a policy will be without running it, with historical data
@@ -138,13 +151,13 @@ Proposed
 * use IS for 4 steps and AM for the rest
 * combine off-policy j-step returns
 * minimize MSE return
-* 
+
 ### Cumulative Prospect Theory x RL
 
 This is an interesting interdiciplinary research of psycho and RL
 * CPT captures human performance
 * the feeling of losing 10k is bigger than wining 10k -> utility function
-* 
+
 ## ICML Day 3 MISC
 
 ### approx kemeny consensus
@@ -152,14 +165,13 @@ This is an interesting interdiciplinary research of psycho and RL
 * rank aggregation: [kemeny](https://en.wikipedia.org/wiki/Kemeny%E2%80%93Young_method) consensus is np-hard, we want a proximity, but fast approach
 * this work: given a ranking, we compute how close it is to the kemeny consensus
 * experiment on sushi ranking
-* 
 
 ### rank breaking for rank aggregation
 
 * rank breaking: break each person's ordinal preference into pairwise comparisons
 * treat the paired comparisons outcomes unequally, depending on the topology of the collected data
 * *best* rank breaking estimator
-* 
+
 ### neural autoregressive for CF
 
 * recently RBM for CF
@@ -172,18 +184,18 @@ This is an interesting interdiciplinary research of psycho and RL
 ###  Scalable Gradient-Based Tuning of Continuous Regularization Hyperparameters
 
 * Learns, using gradient, the regularization factor :p
-* 
+
 ### Electricity Grid Management via RL
 
 * formulate as MDP
 * policy approx and value approx/ typical policy-value pair
 * existing/classical approach + toy dataset, but sounds interesting
-* 
+
 ### forecastICU
 
 * predict, using the sequencial data of the patient, the possibility that the patient needs an ICU treatmeant
 * pretty practical work: predict the case 3 hours before it happens.
-* 
+
 ### Learning to Filter with Predictive State Inference Machines
 
 
@@ -208,7 +220,7 @@ This is an interesting interdiciplinary research of psycho and RL
 * options (mini policies)/ macro-actions
 * option discovery? 
 * sample complexity - mistakes we make
-* 
+
 algorithm
 * efficient exploration by representing uncertainty over model & parameter values
 * adapt representation based on data
