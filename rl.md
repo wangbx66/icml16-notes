@@ -61,7 +61,10 @@ The paper introduces back-up in RL, to UCT. During the search progress, the Q va
 
 ### Doubly Robust Off-policy Value Evaluation
 
-This paper is talking about the robust version of off-policy value evaluation. The problem is extremely important where the new policies evolved can only be examined on the log data instead of a real-time interaction. Applying that to bandit problems, it gurantees to be unbiased and relative lower variance.
+This paper is talking about the robust version of off-policy policy evaluation. The problem is extremely important where the new policies evolved can only be examined on the log data instead of a real-time interaction. Applying that to bandit problems, it gurantees to be unbiased and relative lower variance.
+
+The previous approaches are based on the idea of importance sampling, which corrects the mismatch between the distributions induced by the target policy and by the behavior policy. Such approaches have the salient properties of being
+unbiased and independent of the size of the problem’s state space, but its variance can be too large for the method to be useful when the horizon is long. Apply DR on that is able to reduce the variance, which is guranteed theoratically.
 
 ### Guided Cost Learning Algorithm
 
