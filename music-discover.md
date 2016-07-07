@@ -8,6 +8,7 @@ This is a quick literature review over the application of deep learning algorith
 1. [Audiveris](https://audiveris.kenai.com/) for optic music recognition
 1. [Hexahedria](http://www.hexahedria.com/2015/08/03/composing-music-with-recurrent-neural-networks/) by Daniel Johnson, on the music composing with biaxial LSTM.
 1. [Polyphonic Music Generation and Transcription](http://www-etud.iro.umontreal.ca/~boulanni/ICML2012.pdf) paper on ICML-12
+1. Deephear
 
 ## Dieleman's
 
