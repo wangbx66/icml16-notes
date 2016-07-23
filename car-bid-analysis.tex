@@ -1,0 +1,54 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+
+\title{Car Bid Analysis}
+\author{Bx. Wang}
+
+\begin{document}
+\maketitle
+
+\section{Solution}
+
+I address this problem under the assumption that all the players are smart and are trying to max out their reward, also the fact that all the players are smart and are trying to max out their reward, is a common knowledge among all the players. In this note I ignore the possibility that the player exploits the suboptimality of their opponents' decisions.
+
+Firstly it's obvious that deterministic strategies will diverge. Hence we consider the case where each player is with a mixed strategy, which is represented by a distribution over the set of positive integers $\mathbb{N}^+$. It's sufficient to find all the Nash equilibriums and pick the one with the best payoff. Let's assume that the players' strategies are the same i.e. symmetric Nash, otherwise the player can not determine which strategy she should pick out of the three. Denote the strategy as $p_1, p_2, \dots, p_k, \dots$ s.t. $\sum_k p_k=1$, where $p_k$ is the probability a player chooses $k$.
+
+To get a Nash, $\{p_k\}$ has to be the maxima over all feasible strategies, given that the other 2 players do not modify their strategies. That induces that for any $p_1^\prime, p_2^\prime, \dots, p_k^\prime, \dots$ s.t. $\sum_k p_k^\prime=1$, the expected payoff can only be lower than that of $\{p_k\}$, that is,
+$$ \sum_k p_k^\prime(\sum_{i=1}^{k-1}p_i^2+(\sum_{i=k+1}p_i)^2)\leq \sum_k p_k(\sum_{i=1}^{k-1}p_i^2+(\sum_{i=k+1}p_i)^2) $$
+To achieve this, it's necessary that the KKT condition is satisfied, which induces $\exists C, \forall k$ either
+\begin{equation}
+\sum_{i=1}^{k-1}p_i^2+(\sum_{i=k+1}p_i)^2=C \label{1}
+\end{equation}
+or
+$$p_k=0.$$
+is satisfied. Suppose $p_k>0$, $\forall k$ (proof it later), we have Eq. \eqref{1} satisfied $\forall k$. I first observe
+$$p_k=1-\sum_{i=1}^{k-1}p_i-(C-\sum_{i=1}^{k-1}p_i^2)^{1/2}.$$
+It shows that each term $p_k$ is deterministic given the prefix $p_1, \dots, p_{k-1}$, which indicates that given $p_1$ the strategy $\{p_k\}$ satisfying Eq. \eqref{1}, if exists, is unique. Also if we can find a satisfied stategy $\{p_k\}$ with $\sum_k p_k=1$, $\{\alpha p_k\}$ could satisfy Eq. \eqref{1} with arbitrary $\alpha p_1$. Hence, the strategy satisfying both Eq. \eqref{1} and $\sum_k p_k=1$, if exists, is unique.
+
+Armed with the uniqueness I would try to find a solution and if I do, the problem is solved. It's natural to assume a exponential decay of $p_k$ over $k$ given the problem description. Let $p_k=s^{k-1}(1-s)$ and subsequentially $C=s^2$, Eq. \eqref{1} indicates 
+$$\sum_{i=1}^{k-1}s^{2i-2}(1-s)^2+(\sum_{i=k+1}s^{k-1}(1-s))^2=s^2 \label{3}.$$
+That is, 
+$$(1-s-s^2-s^3)(1-s^{2k-2})=0,$$
+with solution
+$$s=\frac{1}{3}((17+3\cdot33^{\frac{1}{2}})^\frac{1}{3}-2\cdot(17+3\cdot33^{\frac{1}{2}})^{-\frac{1}{3}}).$$
+Since the solution must be unique, this is the only achieveable Nash. I conclude that in order to achieve a Nash, each player should conduct a mixed strategy $\{p_k\}$, where $p_k=s^{k-1}(1-s)$ with the $s$ value stated above.
+
+I find the result instresting. With 3 players the mixed strategy comes with a exponential decay, where the decay rate is the solution of $(1-s-s^2-s^3)=0$ which is slightly larger than $1/2$. With 4 players, could it be the solution of $(1-s-s^2-s^3-s^4)=0$, which is a number between $1/2$ and the the rate corresponding to 3 players? What makes a lot of sense is that, with infinity many players, the rate should be the solution of $(1-s-s^2-\cdots)=0$, which is $1/2$.
+
+\section{Appendix}
+
+I append 2 things to make my note complete and techniqually correct.
+\begin{itemize}
+  \item I show that the solution I'm giving is sufficient condition of a Nash, while all previous reasoning come with the neccessity. In fact with $p_k=s^{k-1}(1-s)$, Eq. \eqref{1} holds for all $k$. The expected payoff of a certain player
+$$\sum_k p_k^\prime(\sum_{i=1}^{k-1}p_i^2+(\sum_{i=k+1}p_i)^2)=s^2$$
+no matter what $p_k^\prime$ value she picks. She can not improve her payoff by modifying her strategy.
+  \item I show that $p_k=0$ is not possible. By contrary if $p_k=0$, we have both $\sum_{i=1}^{k-1}p_i^2+(\sum_{i=k+1}p_i)^2\geq\sum_{i=1}^{k}p_i^2+(\sum_{i=k+2}p_i)^2$ and $\sum_{i=1}^{k-1}p_i^2+(\sum_{i=k+1}p_i)^2\geq\sum_{i=1}^{k-2}p_i^2+(\sum_{i=k}p_i)^2$ satisfied. If either $p_{k-1}$ or $p_{k+1}$ is greater than 0, the player can swap that value with $p_k$ and achieves a better expected payoff. So both of them must be 0, and by induction we have $p_1\cdots=p_k=p_{k+1}=\cdots=0$, which contradict with the fact that $\sum_k p_k=1$.
+
+\end{itemize}
+\end{document}
